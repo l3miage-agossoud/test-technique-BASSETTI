@@ -1,0 +1,54 @@
+<main class="billet-container">
+  <label for="">Liste des propriétés du matériel</label>
+  <div class="example-container">
+    <mat-form-field>
+      <mat-label>ID</mat-label>
+      <input matInput [value]="material?.id">
+    </mat-form-field>
+
+    <mat-form-field floatLabel="always">
+      <mat-label>Name</mat-label>
+      <input matInput [value]="material?.name"  class="example-right-align" placeholder="0">
+    </mat-form-field>
+  </div>
+
+<mat-table
+    [dataSource]="dataSourcePiece "
+    class="mat-elevation-z8"
+    matSort matSortActive="created"
+    matSortDisableClear
+    matSortDirection="desc">
+  <ng-container matColumnDef="masseVolumique">
+    <mat-header-cell mat-header-cell *matHeaderCellDef> Masse Volumique </mat-header-cell>
+    <mat-cell mat-cell *matCellDef="let element">
+      <ng-container *ngFor="let value of element.masseVolumique">
+        (Temp-Val) : {{ value.temperature }} - {{ value.value }} <br>
+      </ng-container>
+
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="coeffPoisson">
+    <mat-header-cell mat-header-cell *matHeaderCellDef> Coefficient Poisson  </mat-header-cell>
+    <mat-cell mat-cell *matCellDef="let element">
+      <ng-container *ngFor="let value of element.coeffPoisson">
+        (Temp-Val) : {{ value.temperature }} - {{ value.value }} <br>
+      </ng-container>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row
+    *matRowDef="let row; columns: displayedColumns;"
+
+    [ngClass]="row.state ? 'barre' : '' "
+    ></mat-row>
+</mat-table>
+
+
+
+
+
+
+</main>
+

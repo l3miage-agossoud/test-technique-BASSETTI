@@ -1,0 +1,29 @@
+<label for="">Liste des pièces</label>
+<mat-table
+    [dataSource]="pieces "
+    class="mat-elevation-z8"
+    matSort matSortActive="created"
+    matSortDisableClear
+    matSortDirection="desc">
+  <ng-container matColumnDef="ID">
+    <mat-header-cell mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+    <mat-cell mat-cell *matCellDef="let element">
+      {{element.ID}}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="sName">
+    <mat-header-cell mat-header-cell *matHeaderCellDef> sName  </mat-header-cell>
+    <mat-cell mat-cell *matCellDef="let element">
+      {{element.sName}}
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row
+    *matRowDef="let row; columns: displayedColumns;"
+    (click)="getPiece(row); openDialog()"
+    [ngClass]="row.state ? 'barre' : '' "
+    ></mat-row>
+</mat-table>
+<!--<mat-paginator [length]="pieces.length" [pageSize]="1" aria-label="Select page of GitHub search results"></mat-paginator>-->

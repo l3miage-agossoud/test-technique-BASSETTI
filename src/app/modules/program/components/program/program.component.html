@@ -1,0 +1,13 @@
+<main>
+  <h2 class="todo-title"> Liste des programmes </h2>
+  <div class="card-container">
+    <div *ngFor="let item of programs" class="card">
+      <div class="card-header">
+        {{ item.ID }} - {{ item.sName }}
+      </div>
+      <div class="card-content">
+      <app-view-piece [pieces]="item.pieces" ></app-view-piece>
+      </div>
+    </div>
+  </div>
+</main>
